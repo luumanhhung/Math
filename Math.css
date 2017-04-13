@@ -1,0 +1,54 @@
+
+    .question {
+        background-color: Indigo;
+        padding: 2px 4px;
+        font: 90px sans-serif;
+        border: 3px solid #000;
+        border-color: LightGray DarkGray DarkGray LightGray;
+        color: White;
+        width: 5em;
+        margin: auto;
+        vertical-align: middle;
+    }
+    
+    .button {
+        padding: 2px 4px;
+        font: 75px sans-serif;
+        border: 3px solid #000;
+        border-color: LightGray DarkGray DarkGray LightGray;
+        color: White;
+        width: 3em;
+    }
+    
+    .save {
+        background-color: Sienna;
+        padding: 2px 4px;
+        font: 75px sans-serif;
+        border: 3px solid #000;
+        border-color: LightGray DarkGray DarkGray LightGray;
+        color: White;
+        width: 3em;
+    }
+    
+    .text {
+        background-color: AliceBlue;
+        font: 50px sans-serif;
+        color: SlateGray;
+    }
+    
+    .label {
+        font: 50px sans-serif;
+        color: SlateGray;
+    }
+    
+    .radio {
+        width: 3em;
+        height: 3em;
+    }
+    
+    .select {
+        background-color: AliceBlue;
+        font: 50px sans-serif;
+        color: SlateGray;
+    }
+    
