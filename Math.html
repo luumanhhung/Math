@@ -59,6 +59,12 @@
     </style>
     <script type="text/javascript">
     var answer, operator, n1r1, n2r1, n1r2, n2r2, right, wrong, remember, oral;
+    var seconds = 0,
+        minutes = 0,
+        hours = 0,
+        myTimer;
+    var hourglassid = 1;
+
     var cookie;
     var audio1 = new Audio('well_done.mp3');
     var audio2 = new Audio('on_click_wrong.mp3');
@@ -69,6 +75,29 @@
 
     function  getCookie(cname) {   
         return  localStorage.getItem(cname);
+    }
+
+    function setTimer() {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+
+        document.getElementById("timer").innerHTML = hours + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+        myTimer = setTimeout(setTimer, 1000);
+    }
+
+    function clearTimer() {
+        clearTimeout(myTimer);
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
     }
 
     function play() {
@@ -126,6 +155,10 @@
         document.getElementById("txtF1R2").value = f1r2;
         document.getElementById("txtF2R2").value = f2r2;
         document.getElementById("txtMax").value = max;
+
+        clearTimer();
+        setTimer();
+        animateHourGlass();
 
         if (remember == 1) {
             document.getElementById("r1").checked = true;
@@ -512,6 +545,26 @@
         }
 
     }
+
+    function animateHourGlass() {
+        var id = setInterval(changeHourGlass, 100);
+
+    }
+
+    function changeHourGlass() {
+        if (hourglassid >= 1 && hourglassid <= 9) {
+            if (hourglassid == 9) {
+                document.getElementById("hourglass").src = "Glass_Hour1.png";
+            } else {
+                document.getElementById("hourglass").src = "Glass_Hour" + hourglassid + ".png";
+            }
+            hourglassid++;
+        } else if (hourglassid >= 50) {
+            hourglassid = 1;
+        } else {
+            hourglassid++;
+        }
+    }
     </script>
 </head>
 
@@ -523,8 +576,8 @@
             <label style="color:red">&#10007</label>
             <label style="color:CornFlowerBlue" id="wrong">0</label>
             &nbsp;&nbsp;&nbsp;
-            <img src="Glass_Hour.png" alt="Time: " style="width:31px;height:44px;">
-            <label style="color:Chocolate" id="wrong">0:00:00</label>
+            <img id="hourglass" src="Glass_Hour.png" alt="Time: " style="width:31px;height:44px;">
+            <label style="color:Chocolate" id="timer">0:00:00</label>
         </div>
         <br>
         <div class="question" align="center" style="vertical-align: middle;">
