@@ -11,18 +11,35 @@
 
 <body onload="play()">
     <form align="center">
-        <div class="label" align="center">
-            <label style="color:green">&#10003</label>
-            <label style="color:CornFlowerBlue" id="right">0</label>
-            <label style="color:red">&#10007</label>
-            <label style="color:CornFlowerBlue" id="wrong">0</label>
-            &nbsp;&nbsp;
-            <canvas id="canvas" width="54" height="54">
-            	
-            </canvas>
-            
-            <label style="color:Chocolate" id="timer">0:00:00</label>
-        </div>
+        
+        <table width="100%">
+            <tbody>
+                <tr>
+                    <td width="33%">
+                        <div class="label" align="left">
+                            <label style="color:DeepPink">Kỷ lục:</label>
+                            <label style="color:Orange" id="record"></label>
+                        </div>
+                    </td>
+                    <td width="33%">
+                        <div class="label" align="center">
+                            <label style="color:green">&#10003</label>
+                            <label style="color:CornFlowerBlue" id="right">0</label>
+                            <label style="color:red">&#10007</label>
+                            <label style="color:CornFlowerBlue" id="wrong">0</label>
+                        </div>
+                    </td>
+                    <td width="33%">
+                        <div class="label" align="right">
+                            <canvas id="canvas" width="54" height="54">                
+                            </canvas>
+                            <label style="color:Chocolate" id="timer">0:00:00</label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
         <br>
         <div class="question" >
             <label id="operation"></label>
@@ -43,6 +60,9 @@
     <br>
     <a class="label" id="displayConfig" href="javascript:toggle();">Cấu hình</a>
     <div class="label" id="toggleConfig" style="display: none" align="left">
+        Target:
+        <input type="text" class="text" id="txtTarget" style="text-align:center" size="5" />
+        <br>
         <br>
         <input type="radio" name="gr1" id="r1" value="1" class="radio" checked/>
         <label for="r1">Không nhớ</label>&nbsp;&nbsp;&nbsp;

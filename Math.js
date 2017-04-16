@@ -1,4 +1,5 @@
     var answer, operator, n1r1, n2r1, n1r2, n2r2, right, wrong, remember, oral;
+
     var seconds = 0,
         minutes = 0,
         hours = 0,
@@ -8,13 +9,16 @@
     var cookie;
     var audio1 = new Audio('well_done.mp3');
     var audio2 = new Audio('on_click_wrong.mp3');
+    var audio3 = new Audio("amazing.mp3");
     var canvas;
-      var context; 
-      var img; 
-      var width=30;
-      var height=54;
-      
-
+    var context;
+    var img;
+    var width = 30;
+    var height = 54;
+    var target = 50;
+    var totalTime = 0;
+    var bestTime = -1;
+    var best={"50":bestTime};
     function  setCookie(cname, cvalue) {
         localStorage.setItem(cname, cvalue);
     }
@@ -24,6 +28,7 @@
     }
 
     function setTimer() {
+        totalTime++;
         seconds++;
         if (seconds >= 60) {
             seconds = 0;
@@ -44,6 +49,7 @@
         seconds = 0;
         minutes = 0;
         hours = 0;
+        totalTime = 0;
     }
 
     function play() {
@@ -70,6 +76,7 @@
 
             remember = 1;
             oral = 0;
+            bestTime = -1;
         } else {
             operator = getCookie("operator");
             n1r1 = Number(getCookie("n1r1"));
@@ -84,19 +91,26 @@
             remember = Number(getCookie("remember"));
             max = Number(getCookie("max"));
             oral = Number(getCookie("oral"));
+            
+            target=Number(getCookie("target"));
+            best=JSON.parse(getCookie("best"));
+            if(best!=null){
+                bestTime=best[""+target];
+            }else{
+                best={"50":bestTime};
+            }
         }
-      canvas   = document.getElementById('canvas');
-      context= canvas.getContext('2d');
-      img= new Image();
-      img.src = 'Hour_Glass.png';
-      img.onload = function() {
-        context.drawImage(img, (height-width)/2, 0);
-      };
+        canvas = document.getElementById('canvas');
+        context = canvas.getContext('2d');
+        img = new Image();
+        img.src = 'Hour_Glass.png';
+        img.onload = function() {
+            context.drawImage(img, (height - width) / 2, 0);
+        };
 
         animateHourGlass();
         clearTimer();
         setTimer();
-        
 
         show();
     }
@@ -113,8 +127,8 @@
         document.getElementById("txtF1R2").value = f1r2;
         document.getElementById("txtF2R2").value = f2r2;
         document.getElementById("txtMax").value = max;
-
-        
+        document.getElementById("txtTarget").value = target;
+        setBestTime();
 
         if (remember == 1) {
             document.getElementById("r1").checked = true;
@@ -417,11 +431,39 @@
         return v2;
     }
 
+    function setBestTime() {
+        var h, m, s;
+        //alert(bestTime);
+        if (bestTime == -1 || bestTime==null) {
+            document.getElementById("record").innerHTML = "";
+        } else {
+            h = Math.floor(bestTime / 3600);
+            m = Math.floor(bestTime % 3600 / 60);
+            s = bestTime % 60;
+            document.getElementById("record").innerHTML = h + ":" + (m ? (m > 9 ? m : "0" + m) : "00") + ":" + (s > 9 ? s : "0" + s);
+        }
+    }
+
     function check(id) {
         if (document.getElementById(id).value == answer) {
             right += 1;
             document.getElementById("right").innerHTML = right;
             audio1.play();
+            if (right == target) {
+                clearTimeout(myTimer);
+                
+                if (bestTime > totalTime || bestTime==-1) {
+                    bestTime = totalTime;
+                    //alert(best);
+                    best[""+target]=bestTime;
+                    //alert(JSON.stringify(best));
+                    setCookie("best", JSON.stringify(best));
+                    
+                    setBestTime();
+                }
+                audio3.play();
+            }
+
             show();
         } else {
             wrong += 1;
@@ -464,6 +506,7 @@
         }
 
         oral = document.getElementById("oral").checked ? 1 : 0;
+        target=parseInt(document.getElementById("txtTarget").value);
         //alert(oral);
         if (v1 > v2 || v3 > v4 || v5 > v6 || v7 > v8) {
             alert("Dữ liệu trong ô đến nhỏ hơn trong ô từ");
@@ -495,6 +538,7 @@
             setCookie("remember", remember);
             setCookie("max", max);
             setCookie("oral", oral);
+            setCookie("target",target);
             toggle();
             show();
 
@@ -503,36 +547,34 @@
     }
 
     function animateHourGlass() {
-        var id = setInterval(changeHourGlass,100);
+        var id = setInterval(changeHourGlass, 100);
 
     }
 
     function changeHourGlass() {
- if(hourglassid<360){
- context.clearRect(0,0,height,height);
-       context.save(); 
-        hourglassid+=36; 
+        if (hourglassid < 360) {
+            context.clearRect(0, 0, height, height);
+            context.save();
+            hourglassid += 36;
 
- 
-// now move across and down half the 
-// width and height of the image (which is 128 x 128)
-context.translate(height/2, height/2); 
- 
-// rotate around this point
-context.rotate(hourglassid* Math.PI/180); 
- 
-// then draw the image back and up
-context.drawImage(img, -width/2, -height/2); 
- 
-// and restore the co-ordinate system to its default
-// top left origin with no rotation
-context.restore();
-}
-else if(seconds%5==0){
-    hourglassid=0;
 
-}
+            // now move across and down half the 
+            // width and height of the image (which is 128 x 128)
+            context.translate(height / 2, height / 2);
 
-      
+            // rotate around this point
+            context.rotate(hourglassid * Math.PI / 180);
+
+            // then draw the image back and up
+            context.drawImage(img, -width / 2, -height / 2);
+
+            // and restore the co-ordinate system to its default
+            // top left origin with no rotation
+            context.restore();
+        } else if (seconds % 5 == 0) {
+            hourglassid = 0;
+
+        }
+
+
     }
-    
