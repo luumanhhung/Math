@@ -10,7 +10,7 @@
     var audio1 = new Audio('well_done.mp3');
     var audio2 = new Audio('on_click_wrong.mp3');
     var audio3 = new Audio("amazing.mp3");
-    var audio4 = new Audio();
+    // var audio4 = new Audio();
     var canvas;
     var context;
     var img;
@@ -266,8 +266,9 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' cộng '+opr2+'&client=tw-ob';
-        audio4.play();
+        responsiveVoice.speak(""+opr1+' cộng '+opr2, "Vietnamese Male");
+        // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' cộng '+opr2+'&client=tw-ob';
+        // audio4.play();
     }
 
     function sub() {
@@ -332,8 +333,9 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' trừ '+opr2+'&client=tw-ob';
-        audio4.play();
+        responsiveVoice.speak(""+opr1+' trừ '+opr2, "Vietnamese Male");
+        // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' trừ '+opr2+'&client=tw-ob';
+        // audio4.play();
     }
 
     function multiple() {
@@ -375,8 +377,9 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' nhân '+opr2+'&client=tw-ob';
-        audio4.play();
+        responsiveVoice.speak(""+opr1+' nhân '+opr2, "Vietnamese Male");
+        // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' nhân '+opr2+'&client=tw-ob';
+        // audio4.play();
     }
 
     function divide() {
@@ -421,8 +424,9 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+(opr1 * opr2)+' chia '+opr1+'&client=tw-ob';
-        audio4.play();
+        responsiveVoice.speak(""+(opr1 * opr2)+' chia '+opr1, "Vietnamese Male");
+        // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+(opr1 * opr2)+' chia '+opr1+'&client=tw-ob';
+        // audio4.play();
     }
 
     function getRandNum(v1, v2) {
