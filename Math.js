@@ -20,6 +20,8 @@
     var totalTime = 0;
     var bestTime = -1;
     var best={"50":bestTime};
+    var onlyAudio=0;
+    var texttospeech="";
     function  setCookie(cname, cvalue) {
         localStorage.setItem(cname, cvalue);
     }
@@ -78,6 +80,7 @@
             remember = 1;
             oral = 0;
             bestTime = -1;
+            onlyAudio=0;
         } else {
             operator = getCookie("operator");
             n1r1 = Number(getCookie("n1r1"));
@@ -100,6 +103,7 @@
             }else{
                 best={"50":bestTime};
             }
+            onlyAudio=Number(getCookie("audio"));
         }
         canvas = document.getElementById('canvas');
         context = canvas.getContext('2d');
@@ -179,7 +183,7 @@
         //alert(oral);
         document.getElementById("oral").checked = (oral == 1);
         document.getElementById('answer').value = "";
-
+        document.getElementById("tts").checked = (onlyAudio == 1);
         if (oral == 1) {
             //alert(oral);
             document.getElementById("toggleInput").style.display = "none";
@@ -190,6 +194,17 @@
             document.getElementById("toggleInput").style.display = "block";
             document.getElementById("toggleOral").style.display = "none";
             document.getElementById("answer").focus();
+        }
+        if (onlyAudio == 1) {
+            //alert(oral);
+            document.getElementById("toggleOperation").style.display = "none";
+            document.getElementById("toggleRepeat").style.display = "block";
+
+        } else {
+            //alert(oral);
+            document.getElementById("toggleOperationsavea").style.display = "block";
+            document.getElementById("toggleRepeat").style.display = "none";
+            
         }
 
     }
@@ -266,7 +281,8 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        responsiveVoice.speak(""+opr1+' cộng '+opr2, "Vietnamese Male");
+        texttospeech=""+opr1+' cộng '+opr2;
+        responsiveVoice.speak(texttospeech, "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' cộng '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -333,7 +349,8 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        responsiveVoice.speak(""+opr1+' trừ '+opr2, "Vietnamese Male");
+        texttospeech=""+opr1+' trừ '+opr2;
+        responsiveVoice.speak(texttospeech , "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' trừ '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -377,7 +394,8 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        responsiveVoice.speak(""+opr1+' nhân '+opr2, "Vietnamese Male");
+        texttospeech=""+opr1+' nhân '+opr2;
+        responsiveVoice.speak(texttospeech , "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' nhân '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -424,7 +442,8 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        responsiveVoice.speak(""+(opr1 * opr2)+' chia '+opr1, "Vietnamese Male");
+        texttospeech=""+(opr1 * opr2)+' chia '+opr1;
+        responsiveVoice.speak(texttospeech , "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+(opr1 * opr2)+' chia '+opr1+'&client=tw-ob';
         // audio4.play();
     }
@@ -516,7 +535,8 @@
 
         oral = document.getElementById("oral").checked ? 1 : 0;
         target=parseInt(document.getElementById("txtTarget").value);
-        //alert(oral);
+        onlyAudio = document.getElementById("tts").checked ? 1 : 0;
+        //alert(onlyAudio);
         if (v1 > v2 || v3 > v4 || v5 > v6 || v7 > v8) {
             alert("Dữ liệu trong ô đến nhỏ hơn trong ô từ");
             return;
@@ -548,6 +568,7 @@
             setCookie("max", max);
             setCookie("oral", oral);
             setCookie("target",target);
+            setCookie("audio", onlyAudio);
             toggle();
             show();
 
@@ -585,5 +606,10 @@
 
         }
 
+
+    }
+
+    function repeat() {
+        responsiveVoice.speak(texttospeech , "Vietnamese Male");
 
     }

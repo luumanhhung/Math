@@ -6,6 +6,7 @@
     <title>Toán tiểu học</title>
     <link rel="stylesheet" type="text/css" href="Math.css">
     <script src="responsivevoice.js"></script>
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     <script src="Math.js"></script>
     
 </head>
@@ -42,8 +43,11 @@
         </table>
 
         <br>
-        <div class="question" >
+        <div class="question"  id="toggleOperation"  style="display: block">
             <label id="operation"></label>
+        </div>
+        <div class="question"  id="toggleRepeat" style="display: none">
+            <img src="speaker.gif" onclick="repeat()" alt="Đọc lại" width="32" height="32"></label>
         </div>
         <br>
         <div class="label" id="toggleInput" style="display: block">
@@ -104,6 +108,9 @@
         <br>
         <br>
         <input type="checkbox" id="oral" style="width:3em;height:3em">Trắc nghiệm</input>
+        <br>
+        <br>
+        <input type="checkbox" id="tts" style="width:3em;height:3em">Chỉ âm thanh</input>
         <br>
         <br>
         <input type="button" class="save" id="save" value="Lưu" onclick="save()" />
