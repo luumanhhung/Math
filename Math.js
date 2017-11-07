@@ -453,7 +453,7 @@
             v2 = v1 + 10;
         } else if (v2 < 0) {
             v2 = v1 + 9;
-        } else if (v2 >= 100) {
+        } else if (v2 >= max) {
             v2 = v1 - 9;
         }
         return v2;
@@ -541,7 +541,7 @@
             alert("Dữ liệu trong ô đến nhỏ hơn trong ô từ");
             return;
         } else if (v1 + v3 >= max || v1 < 0 || v3 < 0) {
-            alert("Dữ liệu trong ô từ nhỏ hơn 0 hoặc tổng của 2 ô từ lớn hơn hay bằng 100");
+            alert("Dữ liệu trong ô từ nhỏ hơn 0 hoặc tổng của 2 ô từ lớn hơn hay bằng "+max);
             return;
         } else {
             operator = opr;
