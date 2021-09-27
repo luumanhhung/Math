@@ -307,7 +307,9 @@
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
         texttospeech = "" + opr1 + ' cộng ' + opr2;
-        responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        try {
+            responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        } catch (error) {}
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' cộng '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -391,7 +393,9 @@
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
         texttospeech = "" + opr1 + ' trừ ' + opr2;
-        responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        try {
+            responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        } catch (error) {}
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' trừ '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -452,7 +456,9 @@
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
         texttospeech = "" + opr1 + ' nhân ' + opr2;
-        responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        try {
+            responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        } catch (error) {}
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' nhân '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -516,7 +522,9 @@
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
         texttospeech = "" + (opr1 * opr2) + ' chia ' + opr1;
-        responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        try {
+            responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        } catch (error) {}
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+(opr1 * opr2)+' chia '+opr1+'&client=tw-ob';
         // audio4.play();
     }
@@ -694,6 +702,7 @@
     }
 
     function repeat() {
-        responsiveVoice.speak(texttospeech, "Vietnamese Male");
-
+        try {
+            responsiveVoice.speak(texttospeech, "Vietnamese Male");
+        } catch (error) {}
     }
