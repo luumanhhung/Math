@@ -209,7 +209,13 @@
             document.getElementById("toggleRepeat").style.display = "none";
 
         }
-
+        if (typeOfSet == 1) {
+            document.getElementById("r4").checked = true;
+        } else if (typeOfSet == 2) {
+            document.getElementById("r5").checked = true;
+        } else {
+            document.getElementById("r6").checked = true;
+        }
     }
 
     function getRandomInt(min, max) {
