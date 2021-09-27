@@ -1,4 +1,4 @@
-    var answer, operator, n1r1, n2r1, n1r2, n2r2, right, wrong, remember, oral;
+    var answer, operator, n1r1, n2r1, n1r2, n2r2, right, wrong, remember, oral, typeOfSet;
 
     var seconds = 0,
         minutes = 0,
@@ -19,9 +19,10 @@
     var target = 50;
     var totalTime = 0;
     var bestTime = -1;
-    var best={"50":bestTime};
-    var onlyAudio=0;
-    var texttospeech="";
+    var best = { "50": bestTime };
+    var onlyAudio = 0;
+    var texttospeech = "";
+
     function  setCookie(cname, cvalue) {
         localStorage.setItem(cname, cvalue);
     }
@@ -80,7 +81,7 @@
             remember = 1;
             oral = 0;
             bestTime = -1;
-            onlyAudio=0;
+            onlyAudio = 0;
         } else {
             operator = getCookie("operator");
             n1r1 = Number(getCookie("n1r1"));
@@ -95,15 +96,15 @@
             remember = Number(getCookie("remember"));
             max = Number(getCookie("max"));
             oral = Number(getCookie("oral"));
-            
-            target=Number(getCookie("target"));
-            best=JSON.parse(getCookie("best"));
-            if(best!=null){
-                bestTime=best[""+target];
-            }else{
-                best={"50":bestTime};
+
+            target = Number(getCookie("target"));
+            best = JSON.parse(getCookie("best"));
+            if (best != null) {
+                bestTime = best["" + target];
+            } else {
+                best = { "50": bestTime };
             }
-            onlyAudio=Number(getCookie("audio"));
+            onlyAudio = Number(getCookie("audio"));
         }
         canvas = document.getElementById('canvas');
         context = canvas.getContext('2d');
@@ -204,7 +205,7 @@
             //alert(oral);
             document.getElementById("toggleOperationsavea").style.display = "block";
             document.getElementById("toggleRepeat").style.display = "none";
-            
+
         }
 
     }
@@ -281,7 +282,7 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        texttospeech=""+opr1+' cộng '+opr2;
+        texttospeech = "" + opr1 + ' cộng ' + opr2;
         responsiveVoice.speak(texttospeech, "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' cộng '+opr2+'&client=tw-ob';
         // audio4.play();
@@ -349,8 +350,8 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        texttospeech=""+opr1+' trừ '+opr2;
-        responsiveVoice.speak(texttospeech , "Vietnamese Male");
+        texttospeech = "" + opr1 + ' trừ ' + opr2;
+        responsiveVoice.speak(texttospeech, "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' trừ '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -394,8 +395,8 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        texttospeech=""+opr1+' nhân '+opr2;
-        responsiveVoice.speak(texttospeech , "Vietnamese Male");
+        texttospeech = "" + opr1 + ' nhân ' + opr2;
+        responsiveVoice.speak(texttospeech, "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+opr1+' nhân '+opr2+'&client=tw-ob';
         // audio4.play();
     }
@@ -442,18 +443,18 @@
         document.getElementById("button2").value = value2;
         document.getElementById("button3").value = value3;
         document.getElementById("button4").value = value4;
-        texttospeech=""+(opr1 * opr2)+' chia '+opr1;
-        responsiveVoice.speak(texttospeech , "Vietnamese Male");
+        texttospeech = "" + (opr1 * opr2) + ' chia ' + opr1;
+        responsiveVoice.speak(texttospeech, "Vietnamese Male");
         // audio4.src ='https://translate.google.com/translate_tts?ie=utf-8&tl=vi-vn&q='+(opr1 * opr2)+' chia '+opr1+'&client=tw-ob';
         // audio4.play();
     }
 
     function getRandNum(v1, v2) {
-        if (v2 < -9) {
+        if (typeOfSet == 1 && v2 < -9) {
             v2 = v1 + 10;
-        } else if (v2 < 0) {
+        } else if (typeOfSet == 1 && v2 < 0) {
             v2 = v1 + 9;
-        } else if (v2 >= max) {
+        } else if (typeOfSet == 1 && v2 >= max) {
             v2 = v1 - 9;
         }
         return v2;
@@ -462,7 +463,7 @@
     function setBestTime() {
         var h, m, s;
         //alert(bestTime);
-        if (bestTime == -1 || bestTime==null) {
+        if (bestTime == -1 || bestTime == null) {
             document.getElementById("record").innerHTML = "";
         } else {
             h = Math.floor(bestTime / 3600);
@@ -479,14 +480,14 @@
             audio1.play();
             if (right == target) {
                 clearTimeout(myTimer);
-                
-                if (bestTime > totalTime || bestTime==-1) {
+
+                if (bestTime > totalTime || bestTime == -1) {
                     bestTime = totalTime;
                     //alert(best);
-                    best[""+target]=bestTime;
+                    best["" + target] = bestTime;
                     //alert(JSON.stringify(best));
                     setCookie("best", JSON.stringify(best));
-                    
+
                     setBestTime();
                 }
                 audio3.play();
@@ -534,14 +535,24 @@
         }
 
         oral = document.getElementById("oral").checked ? 1 : 0;
-        target=parseInt(document.getElementById("txtTarget").value);
+        target = parseInt(document.getElementById("txtTarget").value);
         onlyAudio = document.getElementById("tts").checked ? 1 : 0;
-        //alert(onlyAudio);
+
+        if (document.getElementById("r4").checked) {
+            typeOfSet = 1;
+        } else if (document.getElementById("r5").checked) {
+            typeOfSet = 2;
+        } else {
+            typeOfSet = 3;
+        }
         if (v1 > v2 || v3 > v4 || v5 > v6 || v7 > v8) {
             alert("Dữ liệu trong ô đến nhỏ hơn trong ô từ");
             return;
-        } else if (v1 + v3 >= max || v1 < 0 || v3 < 0) {
-            alert("Dữ liệu trong ô từ nhỏ hơn 0 hoặc tổng của 2 ô từ lớn hơn hay bằng "+max);
+        } else if (v1 + v3 >= max) {
+            alert("Tổng của 2 ô từ lớn hơn hay bằng " + max);
+            return;
+        } else if (typeOfSet == 1 && (v1 < 0 || v3 < 0)) {
+            alert("Dữ liệu trong ô từ nhỏ hơn 0.");
             return;
         } else {
             operator = opr;
@@ -567,8 +578,9 @@
             setCookie("remember", remember);
             setCookie("max", max);
             setCookie("oral", oral);
-            setCookie("target",target);
+            setCookie("target", target);
             setCookie("audio", onlyAudio);
+            setCookie("typeOfSet", typeOfSet);
             toggle();
             show();
 
@@ -610,6 +622,6 @@
     }
 
     function repeat() {
-        responsiveVoice.speak(texttospeech , "Vietnamese Male");
+        responsiveVoice.speak(texttospeech, "Vietnamese Male");
 
     }
