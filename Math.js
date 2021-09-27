@@ -63,7 +63,6 @@
         max = 100;
         remember = 1;
         oral = 0;
-        typeOfSet = 1;
         cookie = Number(getCookie("cookie"));
 
         if (cookie != 1) {
@@ -83,6 +82,7 @@
             oral = 0;
             bestTime = -1;
             onlyAudio = 0;
+            typeOfSet = 1;
         } else {
             operator = getCookie("operator");
             n1r1 = Number(getCookie("n1r1"));
@@ -106,6 +106,7 @@
                 best = { "50": bestTime };
             }
             onlyAudio = Number(getCookie("audio"));
+            typeOfSet = Number(getCookie("typeOfSet"));
         }
         canvas = document.getElementById('canvas');
         context = canvas.getContext('2d');
