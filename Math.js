@@ -204,7 +204,7 @@
 
         } else {
             //alert(oral);
-            document.getElementById("toggleOperationsavea").style.display = "block";
+            document.getElementById("toggleOperation").style.display = "block";
             document.getElementById("toggleRepeat").style.display = "none";
 
         }
@@ -257,25 +257,41 @@
             answer = value1;
             value2 = getRandNum(value1, value1 - 10);
             value3 = getRandNum(value1, value1 - 1);
-            value4 = getRandNum(value1, value1 + 1);
+            value4 = getRandNum(value1, value1 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 2) {
             value2 = opr1 + opr2;
             answer = value2;
             value1 = getRandNum(value2, value2 - 10);
             value3 = getRandNum(value2, value2 - 1);
-            value4 = getRandNum(value2, value2 + 1);
+            value4 = getRandNum(value2, value2 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 3) {
             value3 = opr1 + opr2;
             answer = value3;
             value1 = getRandNum(value3, value3 - 10);
             value2 = getRandNum(value3, value3 - 1);
-            value4 = getRandNum(value3, value3 + 1);
+            value4 = getRandNum(value3, value3 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value2 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else {
             value4 = opr1 + opr2;
             answer = value4;
             value1 = getRandNum(value4, value4 - 10);
             value2 = getRandNum(value4, value4 - 1);
-            value3 = getRandNum(value4, value4 + 1);
+            value3 = getRandNum(value4, value4 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value2 = answer * -1;
+                value3 = getRandNum(answer, answer * -1 + 10);
+            }
         }
 
         document.getElementById("operation").innerHTML = opr1 + " + " + opr2 + " =";
@@ -325,25 +341,41 @@
             answer = value1;
             value2 = getRandNum(value1, value1 - 10);
             value3 = getRandNum(value1, value1 - 1);
-            value4 = getRandNum(value1, value1 + 1);
+            value4 = getRandNum(value1, value1 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 2) {
             value2 = opr1 - opr2;
             answer = value2;
             value1 = getRandNum(value2, value2 - 10);
             value3 = getRandNum(value2, value2 - 1);
-            value4 = getRandNum(value2, value2 + 1);
+            value4 = getRandNum(value2, value2 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 3) {
             value3 = opr1 - opr2;
             answer = value3;
             value1 = getRandNum(value3, value3 - 10);
             value2 = getRandNum(value3, value3 - 1);
-            value4 = getRandNum(value3, value3 + 1);
+            value4 = getRandNum(value3, value3 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value2 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else {
             value4 = opr1 - opr2;
             answer = value4;
             value1 = getRandNum(value4, value4 - 10);
             value2 = getRandNum(value4, value4 - 1);
-            value3 = getRandNum(value4, value4 + 1);
+            value3 = getRandNum(value4, value4 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value2 = getRandNum(answer, answer * -1 + 10);
+            }
         }
 
         document.getElementById("operation").innerHTML = opr1 + " - " + opr2 + " =";
@@ -370,25 +402,41 @@
             answer = value1;
             value2 = getRandNum(value1, value1 - 10);
             value3 = getRandNum(value1, value1 - 1);
-            value4 = getRandNum(value1, value1 + 1);
+            value4 = getRandNum(value1, value1 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 2) {
             value2 = opr1 * opr2;
             answer = value2;
             value1 = getRandNum(value2, value2 - 10);
             value3 = getRandNum(value2, value2 - 1);
-            value4 = getRandNum(value2, value2 + 1);
+            value4 = getRandNum(value2, value2 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 3) {
             value3 = opr1 * opr2;
             answer = value3;
             value1 = getRandNum(value3, value3 - 10);
             value2 = getRandNum(value3, value3 - 1);
-            value4 = getRandNum(value3, value3 + 1);
+            value4 = getRandNum(value3, value3 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value2 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else {
             value4 = opr1 * opr2;
             answer = value4;
             value1 = getRandNum(value4, value4 - 10);
             value2 = getRandNum(value4, value4 - 1);
-            value3 = getRandNum(value4, value4 + 1);
+            value3 = getRandNum(value4, value4 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value2 = getRandNum(answer, answer * -1 + 10);
+            }
         }
 
         document.getElementById("operation").innerHTML = opr1 + " x " + opr2 + " =";
@@ -418,25 +466,41 @@
             answer = value1;
             value2 = getRandNum(value1, value1 - 10);
             value3 = getRandNum(value1, value1 - 1);
-            value4 = getRandNum(value1, value1 + 1);
+            value4 = getRandNum(value1, value1 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 2) {
             value2 = opr2;
             answer = value2;
             value1 = getRandNum(value2, value2 - 10);
             value3 = getRandNum(value2, value2 - 1);
-            value4 = getRandNum(value2, value2 + 1);
+            value4 = getRandNum(value2, value2 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else if (value == 3) {
             value3 = opr2;
             answer = value3;
             value1 = getRandNum(value3, value3 - 10);
             value2 = getRandNum(value3, value3 - 1);
-            value4 = getRandNum(value3, value3 + 1);
+            value4 = getRandNum(value3, value3 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value2 = answer * -1;
+                value4 = getRandNum(answer, answer * -1 + 10);
+            }
         } else {
             value4 = opr2;
             answer = value4;
             value1 = getRandNum(value4, value4 - 10);
             value2 = getRandNum(value4, value4 - 1);
-            value3 = getRandNum(value4, value4 + 1);
+            value3 = getRandNum(value4, value4 + Math.pow(10, getRandomInt(0, 1)));
+            if (typeOfSet != 1) {
+                value3 = answer * -1;
+                value2 = getRandNum(answer, answer * -1 + 10);
+            }
         }
 
         document.getElementById("operation").innerHTML = (opr1 * opr2) + " : " + opr1 + " =";
@@ -455,7 +519,7 @@
             v2 = v1 + 10;
         } else if (typeOfSet == 1 && v2 < 0) {
             v2 = v1 + 9;
-        } else if (typeOfSet == 1 && v2 >= max) {
+        } else if (v2 >= max) {
             v2 = v1 - 9;
         }
         return v2;
