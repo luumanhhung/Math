@@ -63,6 +63,7 @@
         max = 100;
         remember = 1;
         oral = 0;
+        typeOfSet = 1;
         cookie = Number(getCookie("cookie"));
 
         if (cookie != 1) {
